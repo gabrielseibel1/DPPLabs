@@ -1,0 +1,5 @@
+#!/bin/sh
+
+pandoc --filter pandoc-citeproc --bibliography=refs.bib --number-sections -s ex2.md -o build/ex2.pdf
+
+pandoc -o ex2_pres.pdf -t beamer ex2.md
