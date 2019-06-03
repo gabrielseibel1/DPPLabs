@@ -1,6 +1,5 @@
 package com.company;
 
-import java.lang.ref.Reference;
 import java.util.Arrays;
 import java.util.concurrent.CyclicBarrier;
 
