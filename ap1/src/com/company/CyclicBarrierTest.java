@@ -1,6 +1,5 @@
 package com.company;
 
-import java.lang.ref.Reference;
 import java.util.Arrays;
 import java.util.concurrent.CyclicBarrier;
 
@@ -21,10 +20,10 @@ public class CyclicBarrierTest {
 
             @Override
             public void run() {
+                System.out.println("Barreira superada..!! " + (count++) + "x");
                 float determinant = buffer[0] + buffer[1] + buffer[2] - buffer[3] - buffer[4] - buffer[5];
-                System.out.println("Determinant: " + determinant);
                 System.out.println(Arrays.toString(buffer));
-                System.out.println("Barreira superada..!! " + (count++));
+                System.out.println("Determinant: " + determinant);
             }
         });
 
