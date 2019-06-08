@@ -7,25 +7,34 @@ static long steps = 1000000000;
 double pi_omp();
 
 int main(int argc, const char *argv[]) {
-    if (argc != 2) {
-        printf("Run me with <exec> <max_threads>");
+    if (argc != 3) {
+        printf("Run me with %s <max_threads> <n_executions_to_avg>\n", argv[0]);
         return -1;
     }
 
-    int t, max_threads;
-    double pi, start, delta;
+    int i, t, max_threads, execs;
+    double start, delta;
 
     max_threads = atoi(argv[1]);
+    execs = atoi(argv[2]);
 
     for (t = 1; t <= max_threads; t++) {
+
+        double mean_time = 0, pi = 0;
+        for (i = 0; i < execs; ++i) {
+            omp_set_num_threads(t);
+
+            start = omp_get_wtime();
+            pi += pi_omp();
+            delta = omp_get_wtime() - start;
+
+            mean_time += delta;
+        }
+        mean_time /= execs;
+        pi /= execs;
+
         printf("Running on %d threads: ", t);
-        omp_set_num_threads(t);
-
-        start = omp_get_wtime();
-        pi = pi_omp();
-        delta = omp_get_wtime() - start;
-
-        printf("PI = %.16g computed in %.4g seconds\n", pi, delta);
+        printf("PI = %.16g computed in %.4g seconds (on average of %d executions) \n", pi, mean_time, execs);
     }
 }
 

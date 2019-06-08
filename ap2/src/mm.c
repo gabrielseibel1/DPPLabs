@@ -23,16 +23,17 @@ void mm_omp(const double *A, const double *B, double *C, int n) {
 }
 
 int main(int argc, const char **argv) {
-    if (argc != 3) {
-        printf("Run me with <exec> <square_matrix_size> <max_threads>");
+    if (argc != 4) {
+        printf("Run me with %s <square_matrix_size> <max_threads> <n_executions_to_avg>\n", argv[0]);
         return -1;
     }
 
-    int i, j, n, max_threads;
+    int i, t, n, max_threads, execs;
     double *A, *B, *C, start, delta;
 
     n = atoi(argv[1]);
     max_threads = atoi(argv[2]);
+    execs = atoi(argv[3]);
 
     A = (double *) malloc(sizeof(double) * n * n);
     B = (double *) malloc(sizeof(double) * n * n);
@@ -42,15 +43,22 @@ int main(int argc, const char **argv) {
         B[i] = rand() / RAND_MAX;
     }
 
-    for (j = 1; j <= max_threads; j++) {
-        printf("Running on %d threads: ", j);
-        omp_set_num_threads(j);
+    for (t = 1; t <= max_threads; t++) {
 
-        start = omp_get_wtime();
-        mm_omp(A, B, C, n);
-        delta = omp_get_wtime() - start;
+        double mean_time = 0;
+        for (i = 0; i < execs; ++i) {
+            omp_set_num_threads(t);
 
-        printf("MM computed in %.4g seconds\n", delta);
+            start = omp_get_wtime();
+            mm_omp(A, B, C, n);
+            delta = omp_get_wtime() - start;
+
+            mean_time += delta;
+        }
+        mean_time /= execs;
+
+        printf("Running on %d threads: ", t);
+        printf("MM computed in %.4g seconds (on average of %d executions) \n", mean_time, execs);
     }
 
     free(A);
