@@ -4,9 +4,7 @@
 
 #define MAX_THREADS 4
 
-
-void mm_omp(double *A, double *B, double *C, int n) {
-
+void mm_omp(const double *A, const double *B, double *C, int n) {
     int i, j, k;
 
     #pragma omp parallel for shared(A,B,C)
@@ -24,13 +22,11 @@ void mm_omp(double *A, double *B, double *C, int n) {
             C[i * n + j] = dot;
         }
     }
-
 }
-
 
 int main() {
     int i, j, n;
-    double *A, *B, *C, dtime;
+    double *A, *B, *C, start, delta;
 
     n = 512; //matrix size
     A = (double *) malloc(sizeof(double) * n * n);
@@ -42,23 +38,19 @@ int main() {
     }
 
     for (j = 1; j <= MAX_THREADS; j++) {
-
         printf(" running on %d threads: ", j);
-
         omp_set_num_threads(j);
-        dtime = omp_get_wtime();
 
+        start = omp_get_wtime();
         mm_omp(A, B, C, n);
+        delta = omp_get_wtime() - start;
 
-        dtime = omp_get_wtime() - dtime;
-        printf("MM computed in %.4g seconds\n", dtime);
+        printf("MM computed in %.4g seconds\n", delta);
     }
-
 
     free(A);
     free(B);
     free(C);
 
     return 0;
-
 }
