@@ -1,0 +1,78 @@
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/gabriel/Documents/DPPLabs/ap2/bin
+[ 50%] Built target pi
+[100%] Built target mm
+
+
+CPU info:
+
+  *-cpu
+       description: CPU
+       product: Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz
+       vendor: Intel Corp.
+       physical id: 3d
+       bus info: cpu@0
+       version: Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz
+       slot: SOCKET 0
+       size: 4392MHz
+       capacity: 4400MHz
+       width: 64 bits
+       clock: 100MHz
+       capabilities: x86-64 fpu fpu_exception wp vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm cpuid_fault invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm ida arat pln pts flush_l1d cpufreq
+       configuration: cores=4 enabledcores=4 threads=8
+
+
+./pi 8 10
+Running on 1 threads: PI = 3.141592653589971 computed in 11 seconds (on average of 10 executions)
+Running on 2 threads: PI = 3.141592653589901 computed in 5.551 seconds (on average of 10 executions)
+Running on 3 threads: PI = 3.141592653589961 computed in 3.873 seconds (on average of 10 executions)
+Running on 4 threads: PI = 3.141592653589821 computed in 3.051 seconds (on average of 10 executions)
+Running on 5 threads: PI = 3.141592653589596 computed in 2.564 seconds (on average of 10 executions)
+Running on 6 threads: PI = 3.141592653589683 computed in 2.127 seconds (on average of 10 executions)
+Running on 7 threads: PI = 3.14159265358963 computed in 1.911 seconds (on average of 10 executions)
+Running on 8 threads: PI = 3.141592653589769 computed in 1.749 seconds (on average of 10 executions)
+
+
+./mm 500 8 10
+Running on 1 threads: MM computed in 0.3487 seconds (on average of 10 executions)
+Running on 2 threads: MM computed in 0.177 seconds (on average of 10 executions)
+Running on 3 threads: MM computed in 0.1326 seconds (on average of 10 executions)
+Running on 4 threads: MM computed in 0.1175 seconds (on average of 10 executions)
+Running on 5 threads: MM computed in 0.1362 seconds (on average of 10 executions)
+Running on 6 threads: MM computed in 0.1229 seconds (on average of 10 executions)
+Running on 7 threads: MM computed in 0.1196 seconds (on average of 10 executions)
+Running on 8 threads: MM computed in 0.1163 seconds (on average of 10 executions)
+
+
+./mm 750 8 10
+Running on 1 threads: MM computed in 1.26 seconds (on average of 10 executions)
+Running on 2 threads: MM computed in 0.6927 seconds (on average of 10 executions)
+Running on 3 threads: MM computed in 0.5051 seconds (on average of 10 executions)
+Running on 4 threads: MM computed in 0.4169 seconds (on average of 10 executions)
+Running on 5 threads: MM computed in 0.5126 seconds (on average of 10 executions)
+Running on 6 threads: MM computed in 0.4669 seconds (on average of 10 executions)
+Running on 7 threads: MM computed in 0.5342 seconds (on average of 10 executions)
+Running on 8 threads: MM computed in 0.6993 seconds (on average of 10 executions)
+
+
+./mm 1000 8 10
+Running on 1 threads: MM computed in 4.166 seconds (on average of 10 executions)
+Running on 2 threads: MM computed in 1.97 seconds (on average of 10 executions)
+Running on 3 threads: MM computed in 1.398 seconds (on average of 10 executions)
+Running on 4 threads: MM computed in 1.212 seconds (on average of 10 executions)
+Running on 5 threads: MM computed in 1.479 seconds (on average of 10 executions)
+Running on 6 threads: MM computed in 1.309 seconds (on average of 10 executions)
+Running on 7 threads: MM computed in 1.467 seconds (on average of 10 executions)
+Running on 8 threads: MM computed in 1.764 seconds (on average of 10 executions)
+
+
+./mm 2000 8 10
+Running on 1 threads: MM computed in 61.18 seconds (on average of 10 executions)
+Running on 2 threads: MM computed in 30.46 seconds (on average of 10 executions)
+Running on 3 threads: MM computed in 21.62 seconds (on average of 10 executions)
+Running on 4 threads: MM computed in 18.11 seconds (on average of 10 executions)
+Running on 5 threads: MM computed in 20.12 seconds (on average of 10 executions)
+Running on 6 threads: MM computed in 17.45 seconds (on average of 10 executions)
+Running on 7 threads: MM computed in 17.05 seconds (on average of 10 executions)
+Running on 8 threads: MM computed in 16.93 seconds (on average of 10 executions)
