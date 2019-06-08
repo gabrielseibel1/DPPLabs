@@ -7,6 +7,9 @@ cmake ..
 make
 
 #run
+echo "\n\nCPU info:\n"
+sudo lshw -class cpu
+
 echo "\n\n./pi 8 100"
 ./pi 8 100
 
