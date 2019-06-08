@@ -3,17 +3,15 @@
 #include <omp.h>
 
 void mm_omp(const double *A, const double *B, double *C, int n) {
-    int i, j, k;
-
-    #pragma omp parallel for shared(A,B,C)
-    for (i = 0; i < n; i++) {
+#pragma omp parallel for
+    for (int i = 0; i < n; i++) {
 
         //#pragma omp parallel for shared(A,B,C)
-        for (j = 0; j < n; j++) {
+        for (int j = 0; j < n; j++) {
 
             double dot = 0;
             //#pragma omp parallel for reduction(+:dot) shared(A,B,C)
-            for (k = 0; k < n; k++) {
+            for (int k = 0; k < n; k++) {
                 dot += A[i * n + k] * B[k * n + j];
             }
 
