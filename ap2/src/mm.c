@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <omp.h>
 
-#define MAX_THREADS 4
-
 void mm_omp(const double *A, const double *B, double *C, int n) {
     int i, j, k;
 
@@ -25,14 +23,16 @@ void mm_omp(const double *A, const double *B, double *C, int n) {
 }
 
 int main(int argc, const char **argv) {
-    if (argc != 2) {
+    if (argc != 3) {
+        printf("Run me with <exec> <square_matrix_size> <max_threads>");
         return -1;
     }
 
-    int i, j, n;
+    int i, j, n, max_threads;
     double *A, *B, *C, start, delta;
 
     n = atoi(argv[1]);
+    max_threads = atoi(argv[2]);
 
     A = (double *) malloc(sizeof(double) * n * n);
     B = (double *) malloc(sizeof(double) * n * n);
@@ -42,8 +42,8 @@ int main(int argc, const char **argv) {
         B[i] = rand() / RAND_MAX;
     }
 
-    for (j = 1; j <= MAX_THREADS; j++) {
-        printf(" running on %d threads: ", j);
+    for (j = 1; j <= max_threads; j++) {
+        printf("Running on %d threads: ", j);
         omp_set_num_threads(j);
 
         start = omp_get_wtime();

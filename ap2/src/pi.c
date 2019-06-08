@@ -2,18 +2,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_THREADS 4
-
 static long steps = 1000000000;
 
 double pi_omp();
 
 int main(int argc, const char *argv[]) {
-    int t;
+    if (argc != 2) {
+        printf("Run me with <exec> <max_threads>");
+        return -1;
+    }
+
+    int t, max_threads;
     double pi, start, delta;
 
-    for (t = 1; t <= MAX_THREADS; t++) {
-        printf(" running on %d threads: ", t);
+    max_threads = atoi(argv[1]);
+
+    for (t = 1; t <= max_threads; t++) {
+        printf("Running on %d threads: ", t);
         omp_set_num_threads(t);
 
         start = omp_get_wtime();
