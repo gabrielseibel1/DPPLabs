@@ -24,11 +24,16 @@ void mm_omp(const double *A, const double *B, double *C, int n) {
     }
 }
 
-int main() {
+int main(int argc, const char **argv) {
+    if (argc != 2) {
+        return -1;
+    }
+
     int i, j, n;
     double *A, *B, *C, start, delta;
 
-    n = 512; //matrix size
+    n = atoi(argv[1]);
+
     A = (double *) malloc(sizeof(double) * n * n);
     B = (double *) malloc(sizeof(double) * n * n);
     C = (double *) malloc(sizeof(double) * n * n);
